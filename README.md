@@ -416,7 +416,7 @@ When adding platform knowledge, prefer official Cfx documentation and keep gener
 
 ## License
 
-No open-source license file is included in the repository yet. Before publishing or accepting external contributions, add the license selected by the project owner and update this section with its terms.
+ResourceDocs is available under the [MIT License](LICENSE).
 
 ## Disclaimer
 
