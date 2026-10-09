@@ -1,0 +1,327 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-heading: var(--font-sans);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-code: var(--code);
+	--color-code-foreground: var(--code-foreground);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+	--font-sans: var(--font-geist-sans);
+	--background: #fafafc;
+	--foreground: #0f0f15;
+	--card: #ffffff;
+	--card-foreground: #0f0f15;
+	--popover: #ffffff;
+	--popover-foreground: #0f0f15;
+	--primary: #6f50f2;
+	--primary-foreground: #fcfcfc;
+	--secondary: #efeff5;
+	--secondary-foreground: #1a1a21;
+	--muted: #eff0f4;
+	--muted-foreground: #65656f;
+	--accent: #e9e9fc;
+	--accent-foreground: #30246c;
+	--destructive: #df2225;
+	--border: #d3d4d9;
+	--input: #d3d4d9;
+	--ring: #6f50f2;
+	--success: #00a055;
+	--success-foreground: #fcfcfc;
+	--code: #0a0a11;
+	--code-foreground: #e4e4ea;
+	--grid: #2d2d3414;
+	--chart-1: var(--primary);
+	--chart-2: var(--success);
+	--chart-3: #009ee0;
+	--chart-4: #d69c03;
+	--chart-5: #f14d4c;
+	--radius: 0.7rem;
+	--sidebar: var(--background);
+	--sidebar-foreground: var(--foreground);
+	--sidebar-primary: var(--primary);
+	--sidebar-primary-foreground: var(--primary-foreground);
+	--sidebar-accent: var(--accent);
+	--sidebar-accent-foreground: var(--accent-foreground);
+	--sidebar-border: var(--border);
+	--sidebar-ring: var(--ring);
+}
+
+.dark {
+	--background: #09090f;
+	--foreground: #eaebef;
+	--card: #111118;
+	--card-foreground: #eaebef;
+	--popover: #13131a;
+	--popover-foreground: #eaebef;
+	--primary: #8f82ff;
+	--primary-foreground: #f8f8fc;
+	--secondary: #191920;
+	--secondary-foreground: #e7e7ec;
+	--muted: #18181e;
+	--muted-foreground: #91919b;
+	--accent: #1f1e36;
+	--accent-foreground: #dbdbf8;
+	--destructive: #f75d59;
+	--border: #eaebef1c;
+	--input: #eaebef24;
+	--ring: #8f82ff;
+	--success: #3ec173;
+	--success-foreground: #030904;
+	--code: #050508;
+	--code-foreground: #dddde3;
+	--grid: #eaebef0f;
+	--sidebar: var(--background);
+	--sidebar-foreground: var(--foreground);
+	--sidebar-primary: var(--primary);
+	--sidebar-primary-foreground: var(--primary-foreground);
+	--sidebar-accent: var(--accent);
+	--sidebar-accent-foreground: var(--accent-foreground);
+	--sidebar-border: var(--border);
+	--sidebar-ring: var(--ring);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	html {
+		@apply font-sans;
+	}
+}
+
+@layer utilities {
+	.hero-grid {
+		background-image:
+			linear-gradient(to right, var(--grid) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+		background-size: 44px 44px;
+		mask-image: linear-gradient(to bottom, black, transparent 92%);
+	}
+
+	.text-gradient {
+		background: linear-gradient(
+			110deg,
+			var(--primary),
+			color-mix(in srgb, var(--primary) 65%, #51b8ff)
+		);
+		background-clip: text;
+		color: transparent;
+	}
+}
+
+.markdown {
+	color: var(--foreground);
+	line-height: 1.75;
+}
+.markdown h1 {
+	margin: 0 0 1.5rem;
+	font-size: 2.25rem;
+	line-height: 1.15;
+	font-weight: 800;
+	letter-spacing: -0.04em;
+}
+.markdown h2 {
+	margin: 2.5rem 0 1rem;
+	scroll-margin-top: 6rem;
+	font-size: 1.5rem;
+	font-weight: 750;
+	letter-spacing: -0.025em;
+}
+.markdown h3 {
+	margin: 2rem 0 0.75rem;
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+.markdown p {
+	margin: 0.8rem 0;
+	color: var(--muted-foreground);
+}
+.markdown a {
+	color: var(--primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.markdown ul,
+.markdown ol {
+	margin: 1rem 0;
+	padding-left: 1.4rem;
+	color: var(--muted-foreground);
+}
+.markdown ul {
+	list-style: disc;
+}
+.markdown ol {
+	list-style: decimal;
+}
+.markdown li {
+	margin: 0.35rem 0;
+}
+.markdown blockquote {
+	margin: 1.25rem 0;
+	border-left: 3px solid var(--primary);
+	border-radius: 0 var(--radius) var(--radius) 0;
+	background: color-mix(in srgb, var(--primary) 7%, transparent);
+	padding: 0.75rem 1rem;
+}
+.markdown blockquote p {
+	margin: 0;
+}
+.markdown pre {
+	margin: 1.25rem 0;
+	overflow-x: auto;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--code);
+	padding: 1rem;
+	color: var(--code-foreground);
+	font-size: 0.8rem;
+	line-height: 1.7;
+}
+.markdown .code-block {
+	margin: 1.25rem 0;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: calc(var(--radius) * 1.15);
+	background: var(--code);
+	box-shadow: 0 12px 32px rgb(0 0 0 / 0.12);
+}
+.markdown .code-block-header {
+	display: flex;
+	height: 2.5rem;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid rgb(255 255 255 / 0.1);
+	padding: 0 0.55rem 0 1rem;
+	color: color-mix(in srgb, var(--code-foreground) 65%, transparent);
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 650;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.markdown .code-block pre {
+	margin: 0;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+.markdown .syntax-highlight .shiki {
+	margin: 0;
+	overflow-x: auto;
+	border: 0;
+	border-radius: 0;
+	background: transparent !important;
+	padding: 1rem;
+	font-size: 0.8rem;
+	line-height: 1.7;
+}
+.markdown .syntax-highlight code {
+	display: block;
+	min-width: max-content;
+}
+.markdown :not(pre) > code {
+	border-radius: 0.35rem;
+	background: var(--muted);
+	padding: 0.15rem 0.35rem;
+	color: var(--foreground);
+	font-size: 0.86em;
+}
+.markdown table {
+	margin: 1.5rem 0;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	font-size: 0.875rem;
+}
+.markdown th {
+	background: var(--muted);
+	color: var(--foreground);
+	font-weight: 650;
+	text-align: left;
+}
+.markdown th,
+.markdown td {
+	border-bottom: 1px solid var(--border);
+	padding: 0.7rem 0.85rem;
+	vertical-align: top;
+}
+.markdown tr:last-child td {
+	border-bottom: 0;
+}
+.markdown td {
+	color: var(--muted-foreground);
+}
+
+.legal-copy {
+	color: var(--muted-foreground);
+	font-size: 0.95rem;
+	line-height: 1.75;
+}
+.legal-copy p + p {
+	margin-top: 1rem;
+}
+.legal-copy a {
+	color: var(--primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.legal-copy code {
+	border-radius: 0.35rem;
+	background: var(--muted);
+	padding: 0.15rem 0.35rem;
+	color: var(--foreground);
+	font-size: 0.86em;
+}
